@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function($scope, loginFactory) {
+  $scope.email = '';
+  $scope.password = '';
   $scope.signUp = function() {
     if (event.keyCode === 13) {
       console.log('sign in with', event.type, event);
@@ -13,7 +15,9 @@ module.exports = function($scope, loginFactory) {
   $scope.login = function() {
     console.log('login in with', $scope.credentials);
   };
-  let isValid = function(email,password) {
+  $scope.isValid = function(email,password) {
+    let valid = false;
+    console.log('within isValid()', angular.mock.dump(this));
     return true;
   };
 };
