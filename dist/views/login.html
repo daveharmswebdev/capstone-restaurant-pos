@@ -1,6 +1,7 @@
-<div>
+<div class="container customerLogin">
+  <h1>Sign Up / Login</h1>
   <input type="text" placeholder="email@domain.com" ng-model="credentials.email" />
   <input type="text" placeholder="password" ng-model="credentials.password" />
-  <button ng-click="signIn()">Sign In</button>
-  <button ng-click="login()">Login</button>
+  <button class="waves-effect waves-light btn-large" ng-click="signUp()" ng-keyup="signUp()" >Sign Up</button>
+  <a class="waves-effect waves-light btn-large" ng-click="login()">Login</a>
 </div>
