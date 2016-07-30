@@ -1,0 +1,20 @@
+{
+  "predef": [ "document", "jQuery", "$", "console", "angular", "when", "require" ],
+  "esversion": 6,
+  "globalstrict": true,
+  "browserify": true,
+  "globals": {
+  	"describe": false,
+  	"it": false,
+  	"expect": false,
+  	"before": false,
+  	"beforeEach": false,
+  	"after": false,
+  	"afterEach": false,
+    "jasmine": false,
+    "app": false,
+    "notify": false,
+    "require": false
+  },
+  "jasmine": true
+}
