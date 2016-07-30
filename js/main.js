@@ -7,6 +7,7 @@ require('angular-route');
 let app = angular.module('pos', ['ngRoute']);
 
 require('./controller');
+require('./factory');
 
 app.config(function($routeProvider) {
 
