@@ -8,7 +8,7 @@ This system enables a restaurant customer to order entrees for delivery and pick
 
 Angular, Karma, Firebase, SASS, Gulp, & Browserify.
 
-For Karma, unit testing will be done on the Factories. As of now I can't really accomplish unit testing on the controllers. Having difficulty testing promises.
+For Karma, unit testing will be done on the Factories. As of now I can't fully accomplish unit testing on the controllers. Having difficulty testing promises. But I can test functions within controllers that don't resolve promises (see unitTest.js).
 
 ## Stretch Features
 
@@ -17,3 +17,5 @@ Login for employees. Admin rights for the restaurant owner. Ability to style men
 # Installation
 
 You will need to do a `npm install` to load all the dependencies. And you will also need to `gulp` to compile the SASS/CSS.
+
+*ALSO*, you will have to copy css/materialize.min.css and fonts from materialize-css/dist from the NPM installation and place them in them in root/dist folder.
