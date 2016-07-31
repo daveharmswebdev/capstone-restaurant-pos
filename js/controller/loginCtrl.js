@@ -1,23 +1,40 @@
 'use strict';
 
 module.exports = function($scope, loginFactory) {
-  $scope.email = '';
-  $scope.password = '';
+  $scope.badEmail = false;
+  $scope.badPassword = false;
   $scope.signUp = function() {
-    if (event.keyCode === 13) {
-      console.log('sign in with', event.type, event);
-    } else if (event.type === 'click') {
-      console.log(isValid($scope.credentials.email, $scope.credentials.password));
-      console.log('sign in with', event.type, event);
+    if ($scope.isValidEmail() === 0 & $scope.isValidPassword() === 0) {
+      console.log('good credentials click', event.type);
+      loginFactory.createAccount($scope.email, $scope.password);
+    } else {
+      console.log('bad email/pass');
     }
-    // loginFactory.createAccount($scope.credentials.email, $scope.credentials.password);
   };
   $scope.login = function() {
-    console.log('login in with', $scope.credentials);
+    console.log('login in with');
   };
-  $scope.isValid = function(email,password) {
-    let valid = false;
-    console.log('within isValid()', angular.mock.dump(this));
-    return true;
+  $scope.isValidEmail = function() {
+    console.log('email', $scope.email);
+    let valid = 0;
+    valid += $scope.email.length > 2 ? 0 : 1;
+    valid += /@/g.test($scope.email) ? 0 : 1;
+    console.log(/(.com|.net|.org|.int|.edu|.gov|.mil|.de|.uk)/g.test($scope.email));
+    valid += /(.com|.net|.org|.int|.edu|.gov|.mil|.de|.uk)/g.test($scope.email) ? 0 : 1;
+    $scope.badEmail = valid > 0 ? true : false;
+    return valid;
+  };
+  $scope.isValidPassword = function() {
+    console.log('password', $scope.password);
+    let valid = 0;
+    valid += $scope.password.length > 5 ? 0 : 1;
+    // needs a number
+    valid += /[0-9]/g.test($scope.password) ? 0 : 1;
+    // needs a special character
+    valid += /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/g.test($scope.password) ? 0 : 1;
+    // needs uppercase
+    valid += /[A-Z]/g.test($scope.password) ? 0 : 1;
+    $scope.badPassword = valid > 0 ? true : false;
+    return valid;
   };
 };

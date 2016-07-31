@@ -1,6 +1,7 @@
 dist/bundle.js
 dist/bundle.js.map
 dist/css/style.css
+dist/fonts
 node_modules
 js/values/firebaseCreds.js
 archive

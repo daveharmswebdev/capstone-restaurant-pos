@@ -1,7 +1,9 @@
 <div class="container customerLogin">
   <h1>Sign Up / Login</h1>
-  <input type="text" placeholder="email@domain.com" ng-model="credentials.email" />
-  <input type="text" placeholder="password" ng-model="credentials.password" />
-  <button class="waves-effect waves-light btn-large" ng-click="signUp()" ng-keyup="signUp()" >Sign Up</button>
+  <input type="text" placeholder="email@domain.com" ng-model="email" />
+  <p class="loginWarning" ng-show="badEmail">email must be a proper email address</p>
+  <input type="text" placeholder="password" ng-model="password" />
+  <p class="loginWarning" ng-show="badPassword">password must be at least 6 alphanumeric characters with one special character and one uppercase letter</p>
+  <a class="waves-effect waves-light btn-large" ng-click="signUp()">Sign Up</a>
   <a class="waves-effect waves-light btn-large" ng-click="login()">Login</a>
 </div>

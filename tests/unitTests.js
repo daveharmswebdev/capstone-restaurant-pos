@@ -11,15 +11,15 @@ describe('loginCtrl', function() {
 
   }));
 
-  describe('isValid', function() {
-    it('should return evaluate validity of email and password', function() {
+  xdescribe('isValidEmail', function() {
+    it('should evaluate validity of email', function() {
       let $scope = {};
       let controller = $controller('loginCtrl', { $scope: $scope });
-      $scope.email = '1234';
-      $scope.password = 'qwerty';
+      $scope.email = 'test@test.com';
+      $scope.password = 'Test1test@com';
       let prettier = angular.mock.dump($scope);
-      dump(prettier);
-      expect($scope.isValid()).toBe(true);
+      expect($scope.isValidEmail()).toBe(0);
+      expect($scope.isValidPassword()).toBe(0);
     });
   });
 });
