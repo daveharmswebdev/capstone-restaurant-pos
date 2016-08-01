@@ -12,8 +12,7 @@ module.exports = function($scope, loginFactory, $location) {
     console.log($scope.email, $scope.password);
     if ($scope.isValidEmail() === 0 & $scope.isValidPassword() === 0) {
       loginFactory.createAccount($scope.email, $scope.password)
-      .then(function(result) {
-        // console.log(result);
+      .then(function(response) {
         $location.url('/profile');
       });
       // $location.url('/profile');
