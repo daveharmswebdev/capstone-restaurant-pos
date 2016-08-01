@@ -20,6 +20,10 @@ app.config(function($routeProvider) {
     templateUrl: './views/customerProfile.html',
     controller: 'profileCtrl'
   })
+  .when('/order', {
+    templateUrl: './views/order.html',
+    controller: 'orderCtrl'
+  })
   .when('/test', {
     templateUrl: './views/test.html',
     controller: 'testCtrl'

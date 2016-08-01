@@ -18,19 +18,6 @@ module.exports = function($q, $http, loginFactory) {
     });
   };
 
-  // let postNewItems = function(newItem) {
-  //   console.log(newItem, FBCreds.dbURL);
-  //   return $q(function(resolve, reject) {
-  //     $http.post(`${FBCreds.dbURL}/items.json`, JSON.stringify(newItem))
-  //     .success(function(objFromFirebase) {
-  //       resolve(objFromFirebase);
-  //     })
-  //     .error(function(error) {
-  //       reject(error);
-  //     });
-  //   });
-  // };
-
   let getProfile = function(uid) {
     return $q(function(resolve, reject) {
       $http.get(`${FBCreds.databaseURL}/profile.json?orderBy="uid"&equalTo="${uid}"`)
