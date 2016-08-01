@@ -20,7 +20,7 @@ app.config(function($routeProvider) {
     templateUrl: './views/customerProfile.html',
     controller: 'profileCtrl'
   })
-  .when('/user', {
+  .when('/order', {
     templateUrl: './views/order.html',
     controller: 'orderCtrl'
   })

@@ -1,4 +1,31 @@
 <div class="container">
-  <h1>Order</h1>
-  <a class="waves-effect waves-teal btn-flat" ng-click="addItem()">Button</a>
+  <nav>
+    <div class="nav-wrapper">
+      <ul>
+        <li class="tab">Items {{items}}</li>
+        <li class="tab">Subtotal: {{subtotal}}</li>
+        <a class="waves-effect waves-teal btn-flat" ng-click="checkOut()">Checkout</a>
+      </ul>
+    </div>
+  </nav>
+  <div class="menu">
+    <div class="col s12 m7" ng-repeat="item in menu">
+      <div class="card horizontal">
+        <div class="card-image">
+          <img ng-src="{{item.imageUrl}}" />
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h3>{{item.name}}</h3>
+            <p>{{item.description}}</p>
+            <p>${{item.price}}</p>
+          </div>
+          <div class="card-action">
+            <a class="waves-effect waves-teal btn-flat" ng-click="addItem(item)">Button</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="waves-effect waves-light btn-large" ng-click="checkOut()">Button</a>
 </div>
