@@ -2,12 +2,14 @@
 
 module.exports = function(firebaseFactory, $timeout) {
   let firebase = firebaseFactory.fbInstance;
-  let currentUser = null;
+  let currentUser = {};
 
   // listens for firebase user change
   firebase.auth().onAuthStateChanged(function(user) {
     if(user) {
-      currentUser = user.id;
+      currentUser.uid = user.uid;
+      currentUser.email = user.email;
+      console.log(currentUser);
     } else {
       console.log('no user logged in');
     }

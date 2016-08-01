@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($scope, loginFactory) {
+module.exports = function($scope, loginFactory, $location) {
   // sets ng-show to true if password or email fail validation
   $scope.badEmail = false;
   $scope.badPassword = false;
@@ -9,8 +9,14 @@ module.exports = function($scope, loginFactory) {
   $scope.signUp = function() {
     // uses & instead of && to avoid short circuiting and invokes both
     // validation methods.
+    console.log($scope.email, $scope.password);
     if ($scope.isValidEmail() === 0 & $scope.isValidPassword() === 0) {
-      loginFactory.createAccount($scope.email, $scope.password);
+      loginFactory.createAccount($scope.email, $scope.password)
+      .then(function(result) {
+        // console.log(result);
+        $location.url('/profile');
+      });
+      // $location.url('/profile');
     }
   };
   $scope.login = function() {
