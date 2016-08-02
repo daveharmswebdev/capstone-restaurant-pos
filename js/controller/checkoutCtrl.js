@@ -12,10 +12,14 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     $scope.profile = profile[key];
     console.log($scope.profile);
   });
-  $scope.ticket = orderFactory.getCurrentTicket;
-  let ticketArray = orderFactory.getCurrentTicket;
-  $scope.subtotal = 38;
-  $scope.tax = 4.18;
+  let removeHash = function(item) {
+    delete item.$$hashKey;
+    return item;
+  };
+  $scope.ticket = orderFactory.getCurrentTicket();
+  $scope.subtotal = orderFactory.getTotals().subTotal;
+  $scope.tax = orderFactory.getTotals().tax;
+  $scope.grandTotal = orderFactory.getTotals().grandTotal;
   $scope.completeTicket = function() {
     let ticket = {};
     ticket.email = $scope.currentUser.email;
@@ -25,8 +29,8 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     ticket.streetAddress = $scope.profile.streetAddress;
     ticket.city = $scope.profile.city;
     ticket.state = $scope.profile.state;
-    $scope.zip = $scope.profile.zip;
-    ticket.order = ticketArray;
+    ticket.zip = $scope.profile.zip;
+    ticket.order = $scope.ticket.map(item => removeHash(item));
     ticket.subtotal = $scope.subtotal;
     ticket.tax = $scope.tax;
     ticket.grandTotal = $scope.grandTotal;
