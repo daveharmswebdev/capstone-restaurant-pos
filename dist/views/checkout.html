@@ -4,15 +4,22 @@
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">Checkout</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div class="receipt">
-          <ul>
-            <li class="receipt--listItem" ng-repeat="item in ticket">{{item.name}} {{item.price}}</li>
-          </ul>
+          <p>{{currentUser.email}}</p>
+          <p>{{profile.firstName}} {{profile.lastName}}</p>
+          <p>{{profile.streetAddress}}</p>
+          <p>{{profile.city}}, TN {{profile.zip}}</p>
+        </div>
+        <div class="row receipt" ng-repeat="item in ticket">
+          <div class="col s4 push-s2">{{item.name}}</div>
+          <div class="col s5 price">${{item.price}}</div>
+        </div>
+        <div class="row">
+          <div class="col s3 offset-s3 subtotal">Subtotal</div>
+          <div class="col s3 subtotal">${{subtotal}}</div>
+        </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
+          <a class="waves-effect waves-light btn" ng-click="delivery()">Delivery</a>
+          <a class="waves-effect waves-light btn" ng-click="pickup()">Pickup</a>
         </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ module.exports = function($q, $http, loginFactory) {
   };
 
   let getProfile = function(uid) {
+    console.log('get profile with', uid);
     return $q(function(resolve, reject) {
       $http.get(`${FBCreds.databaseURL}/profile.json?orderBy="uid"&equalTo="${uid}"`)
       .success(function(results) {
