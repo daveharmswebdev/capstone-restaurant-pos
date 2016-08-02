@@ -21,6 +21,8 @@ module.exports = function($q, $http) {
   };
 
   return {
-    getMenu
+    getMenu,
+    setCurrentTicket,
+    getCurrentTicket
   };
 };

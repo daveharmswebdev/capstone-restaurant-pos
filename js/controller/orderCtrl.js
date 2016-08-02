@@ -15,7 +15,7 @@ module.exports = function($scope, orderFactory, $location) {
     console.log(error);
   });
 
-  $scope.checkout = function() {
+  $scope.checkOut = function() {
     orderFactory.setCurrentTicket($scope.ticket);
     $location.url('/checkout');
   };

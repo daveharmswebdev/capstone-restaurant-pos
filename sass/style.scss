@@ -20,3 +20,16 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
   margin: 0 1rem;
   float: right;
 }
+
+.receipt {
+  padding: 0.25rem 1rem;
+  margin: 0;
+}
+
+.price, .subtotal {
+  text-align: right;
+}
+
+.subtotal {
+  font-size: 2rem;
+}
