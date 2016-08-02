@@ -46,11 +46,25 @@ module.exports = function($q, $http) {
     });
   };
 
+  let getCustomerHistory = function(uid) {
+    console.log(`getting history with ${uid}`);
+    return $q(function(resolve, reject) {
+      $http.get(`${FBCreds.databaseURL}/ticket.json?orderBy="uid"&equalTo="${uid}"`)
+      .success(function(history) {
+        resolve(history);
+      })
+      .error(function(error) {
+        reject(error);
+      });
+    });
+  };
+
   return {
     getMenu,
     getTotals,
     postTicket,
     setCurrentTicket,
-    getCurrentTicket
+    getCurrentTicket,
+    getCustomerHistory
   };
 };

@@ -21,8 +21,20 @@ module.exports = function(firebaseFactory, $timeout) {
 
   let getCurrentUser = () => currentUser;
 
+  let loginEmail = function(email, password) {
+    console.log('loginEmail');
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  };
+
+  let logoutUser = function() {
+    console.log('logout user');
+    return firebase.auth().signOut();
+  };
+
   return {
     createAccount,
-    getCurrentUser
+    getCurrentUser,
+    loginEmail,
+    logoutUser
   };
 };
