@@ -19,9 +19,36 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     { name: "Tom Kka Gai", price: 7},
     { name: "Spring Rolls", price: 5}
   ];
+  let ticketArray = [
+    { name: "Pad Thai", price: 9},
+    { name: "Fried Rice", price: 8},
+    { name: "Kao Prow", price: 9},
+    { name: "Tom Kka Gai", price: 7},
+    { name: "Spring Rolls", price: 5}
+  ];
   $scope.subtotal = 38;
+  $scope.tax = 4.18;
+  $scope.completeTicket = function() {
+    let ticket = {};
+    ticket.email = $scope.currentUser.email;
+    ticket.uid = $scope.currentUser.uid;
+    ticket.lastName = $scope.profile.lastName;
+    ticket.firstName = $scope.profile.firstName;
+    ticket.streetAddress = $scope.profile.streetAddress;
+    ticket.city = $scope.profile.city;
+    ticket.state = $scope.profile.state;
+    $scope.zip = $scope.profile.zip;
+    ticket.order = ticketArray;
+    ticket.subtotal = $scope.subtotal;
+    ticket.tax = $scope.tax;
+    ticket.grandTotal = $scope.grandTotal;
+    ticket.timestamp = Date.now();
+    return ticket;
+  };
   $scope.delivery = function() {
-    console.log('delivery');
+    let ticket = $scope.completeTicket();
+    ticket.delivery = true;
+    console.log('delivery', ticket);
   };
   $scope.pickup = function() {
     console.log('pickup');

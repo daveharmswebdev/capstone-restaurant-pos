@@ -21,7 +21,7 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
   float: right;
 }
 
-.receipt {
+.receipt--list {
   padding: 0.25rem 1rem;
   margin: 0;
 }
@@ -32,4 +32,10 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
 
 .subtotal {
   font-size: 2rem;
+}
+
+// checkouthtml
+
+.receipt {
+  width: 36rem;
 }

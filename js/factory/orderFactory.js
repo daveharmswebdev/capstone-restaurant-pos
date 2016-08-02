@@ -20,8 +20,13 @@ module.exports = function($q, $http) {
     });
   };
 
+  let postTicket = function(ticket) {
+    console.log('postTicket', ticket);
+  };
+
   return {
     getMenu,
+    postTicket,
     setCurrentTicket,
     getCurrentTicket
   };
