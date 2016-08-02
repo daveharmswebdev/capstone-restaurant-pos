@@ -48,7 +48,10 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
   $scope.delivery = function() {
     let ticket = $scope.completeTicket();
     ticket.delivery = true;
-    console.log('delivery', ticket);
+    orderFactory.postTicket(ticket)
+    .then(function(result) {
+      console.log(result);
+    });
   };
   $scope.pickup = function() {
     console.log('pickup');
