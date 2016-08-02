@@ -12,20 +12,8 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     $scope.profile = profile[key];
     console.log($scope.profile);
   });
-  $scope.ticket = [
-    { name: "Pad Thai", price: 9},
-    { name: "Fried Rice", price: 8},
-    { name: "Kao Prow", price: 9},
-    { name: "Tom Kka Gai", price: 7},
-    { name: "Spring Rolls", price: 5}
-  ];
-  let ticketArray = [
-    { name: "Pad Thai", price: 9},
-    { name: "Fried Rice", price: 8},
-    { name: "Kao Prow", price: 9},
-    { name: "Tom Kka Gai", price: 7},
-    { name: "Spring Rolls", price: 5}
-  ];
+  $scope.ticket = orderFactory.getCurrentTicket;
+  let ticketArray = orderFactory.getCurrentTicket;
   $scope.subtotal = 38;
   $scope.tax = 4.18;
   $scope.completeTicket = function() {
