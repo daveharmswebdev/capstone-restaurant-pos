@@ -20,6 +20,16 @@ module.exports = function($scope, loginFactory, $location) {
   };
   $scope.login = function() {
     console.log('login in with');
+    loginFactory.loginEmail($scope.email, $scope.password)
+    .then(function(response) {
+      console.log(response);
+    });
+  };
+  $scope.logout = function() {
+    loginFactory.logoutUser()
+    .then(function() {
+      console.log('logout: user out!');
+    });
   };
   $scope.isValidEmail = function() {
     let valid = 0;
