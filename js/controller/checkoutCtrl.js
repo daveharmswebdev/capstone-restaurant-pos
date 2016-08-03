@@ -41,7 +41,8 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
   $scope.delivery = function() {
     let ticket = $scope.completeTicket();
     ticket.delivery = true;
-    orderFactory.postTicket(ticket)
+    let method = 'POST';
+    orderFactory.postTicket(ticket, method)
     .then(function(result) {
       console.log(result);
     });
