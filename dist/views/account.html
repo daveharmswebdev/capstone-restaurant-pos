@@ -9,14 +9,12 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col s12 m5">
-      <div class="card-panel teal">
-        <div class="white-text" ng-repeat="order in history">{{order.timestamp}} ${{order.grandTotal}}
-          <a class="waves-effect waves-light btn" ng-click="cancel(order)">cancel</a>
-          <a class="waves-effect waves-light btn" ng-click="edit(order)">edit</a>
-        </div>
-      </div>
+  <div class="col s12">
+    <div class="row white-text history" ng-repeat="order in history">
+      <div class="col s4"><p class="history--content">{{order.timestamp}} ${{order.grandTotal}}</p></div>
+      <div class="col s4"><p class="history--content">{{order.timestamp}} ${{order.grandTotal}}</p></div>
+      <div class="col s2"><p><i class="small material-icons" ng-click="cancel(order)">not_interested</i></p></div>
+      <div class="col s2"><p><i class="small material-icons" ng-click="edit(order)">mode_edit</i></p></div>
     </div>
   </div>
 </div>

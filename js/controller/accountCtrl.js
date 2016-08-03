@@ -1,5 +1,7 @@
 'use strict';
 
+const accountFactory = require('../factory/accountFactory');
+
 module.exports = function($scope, loginFactory, profileFactory, orderFactory) {
   $scope.currentUser = loginFactory.getCurrentUser();
   $scope.profile = null;
@@ -32,5 +34,9 @@ module.exports = function($scope, loginFactory, profileFactory, orderFactory) {
   };
   $scope.edit = function(order) {
     console.log('edit', order);
+    accountFactory.getOrder(order.key)
+    .then(function(result) {
+      console.log('ctrl getOrder:', result);
+    });
   };
 };
