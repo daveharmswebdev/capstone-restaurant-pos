@@ -6,10 +6,12 @@ module.exports = function($scope, orderFactory, $location) {
   $scope.ticket = [];
   $scope.items = 0;
   $scope.subtotal = 0;
+  $scope.subtotalString = 'Subtotal:  '
 
   orderFactory.getMenu()
   .then(function(menuData) {
     $scope.menu = Object.keys(menuData).map(key => menuData[key]);
+    console.log($scope.menu);
   })
   .catch(function(error) {
     console.log(error);
@@ -29,5 +31,12 @@ module.exports = function($scope, orderFactory, $location) {
       $scope.ticket.push(x);
       $scope.items += 1;
       $scope.subtotal += item.price;
+  };
+
+  $scope.delete = function(selection, $index) {
+    console.log('delete', selection, $index);
+    $scope.items -= 1;
+    $scope.subtotal -= $scope.ticket[$index].price;
+    $scope.ticket.splice($index,1);
   };
 };
