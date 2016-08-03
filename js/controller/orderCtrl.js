@@ -6,7 +6,6 @@ module.exports = function($scope, orderFactory, $location) {
   $scope.ticket = [];
   $scope.items = 0;
   $scope.subtotal = 0;
-  $scope.subtotalString = 'Subtotal:  '
 
   orderFactory.getMenu()
   .then(function(menuData) {

@@ -35,12 +35,14 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     ticket.tax = $scope.tax;
     ticket.grandTotal = $scope.grandTotal;
     ticket.timestamp = Date.now();
+    ticket.status = 1; // 1 means active, 0 means cancel, 2 mean complete
     return ticket;
   };
   $scope.delivery = function() {
     let ticket = $scope.completeTicket();
     ticket.delivery = true;
-    orderFactory.postTicket(ticket)
+    let method = 'POST';
+    orderFactory.postTicket(ticket, method)
     .then(function(result) {
       console.log(result);
     });

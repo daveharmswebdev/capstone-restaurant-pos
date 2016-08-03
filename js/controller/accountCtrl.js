@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = function($scope, loginFactory, profileFactory, orderFactory) {
+const accountFactory = require('../factory/accountFactory');
+
+module.exports = function($scope, loginFactory, profileFactory, orderFactory, $route) {
   $scope.currentUser = loginFactory.getCurrentUser();
   $scope.profile = null;
   $scope.history = [];
@@ -29,8 +31,20 @@ module.exports = function($scope, loginFactory, profileFactory, orderFactory) {
   }
   $scope.cancel = function(order) {
     console.log('cancel', order);
+    accountFactory.cancel(order.key)
+    .then(function(result) {
+      console.log(result);
+      $route.reload();
+    })
+    .catch(function(error) {
+      console.log(error.statusText, error.responseText);
+    });
   };
   $scope.edit = function(order) {
     console.log('edit', order);
+    accountFactory.getOrder(order.key)
+    .then(function(result) {
+      console.log('ctrl getOrder:', result);
+    });
   };
 };
