@@ -34,9 +34,9 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     ticket.status = 'active';
     return ticket;
   };
-  $scope.delivery = function() {
+  $scope.submitOrder = function(deliver) {
     let ticket = $scope.completeTicket();
-    ticket.delivery = true;
+    ticket.delivery = deliver;
     orderFactory.postTicket(ticket)
     .then(function(result) {
       console.log(result);

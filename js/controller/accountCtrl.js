@@ -17,6 +17,7 @@ module.exports = function($scope, loginFactory, profileFactory, $route, orderFac
     let array = [];
     Object.keys(history).forEach( key => array.push(modifyForDisplay(history[key], key)));
     $scope.history = array;
+    $scope.$apply();
     console.log($scope.history);
   })
   .catch(function(error) {
