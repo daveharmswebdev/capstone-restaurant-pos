@@ -7,7 +7,8 @@ module.exports = function($scope, orderFactory, $location) {
   $scope.items = 0;
   $scope.subtotal = 0;
 
-  if (orderFactory.getCurrentTicket().length) {
+  if (orderFactory.getCurrentTicket() !== null && orderFactory.getCurrentTicket().length > 0) {
+    console.log('there is a length');
     let editTicket = orderFactory.getCurrentTicket();
     editTicket.forEach(function(item) {
       $scope.ticket.push(item);

@@ -9,3 +9,4 @@ app.controller('orderCtrl', require('./orderCtrl'));
 app.controller('checkoutCtrl', require('./checkoutCtrl'));
 app.controller('accountCtrl', require('./accountCtrl'));
 app.controller('testCtrl', require('./testCtrl'));
+app.controller('navCtrl', require('./navCtrl'));

@@ -12,7 +12,7 @@ require('./factory');
 app.config(function($routeProvider) {
 
   $routeProvider
-  .when('/', {
+  .when('/login', {
     templateUrl: './views/login.html',
     controller: 'loginCtrl'
   })
@@ -37,6 +37,6 @@ app.config(function($routeProvider) {
     controller: 'accountCtrl'
   })
   .otherwise({
-    redirectTo: '/'
+    redirectTo: '/login'
   });
 });

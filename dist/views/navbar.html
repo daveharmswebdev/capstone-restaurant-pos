@@ -1,0 +1,10 @@
+<div class="container" ng-controller="navCtrl">
+  <nav>
+   <div class="nav-wrapper">
+     <a href="#" class="brand-logo">Restaurant</a>
+     <ul id="nav-mobile" class="right hide-on-med-and-down" ng-repeat="item in navItems">
+       <li><a href="{{item.url}}">{{item.name}}</a></li>
+     </ul>
+   </div>
+ </nav>
+</div>
