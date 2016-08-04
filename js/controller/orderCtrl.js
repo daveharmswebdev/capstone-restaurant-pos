@@ -7,10 +7,18 @@ module.exports = function($scope, orderFactory, $location) {
   $scope.items = 0;
   $scope.subtotal = 0;
 
+  if (orderFactory.getCurrentTicket().length) {
+    let editTicket = orderFactory.getCurrentTicket();
+    editTicket.forEach(function(item) {
+      $scope.ticket.push(item);
+      $scope.items += 1;
+      $scope.subtotal += item.price;
+    });
+  }
+
   orderFactory.getMenu()
   .then(function(menuData) {
     $scope.menu = Object.keys(menuData).map(key => menuData[key]);
-    console.log($scope.menu);
   })
   .catch(function(error) {
     console.log(error);
@@ -33,7 +41,6 @@ module.exports = function($scope, orderFactory, $location) {
   };
 
   $scope.delete = function(selection, $index) {
-    console.log('delete', selection, $index);
     $scope.items -= 1;
     $scope.subtotal -= $scope.ticket[$index].price;
     $scope.ticket.splice($index,1);

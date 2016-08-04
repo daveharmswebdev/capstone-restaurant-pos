@@ -4,10 +4,10 @@
 const $ = require('jQuery');
 const FBCreds = require('../values/firebaseCreds');
 
-let accountFactory = {};
+let factory = {};
 
 // ajax requests
-accountFactory.getOrder = function(key) {
+factory.getOrder = function(key) {
   return new Promise(function(resolve, reject) {
     $.ajax({
       url: `${FBCreds.databaseURL}/ticket/${key}.json`,
@@ -22,7 +22,7 @@ accountFactory.getOrder = function(key) {
   });
 };
 
-accountFactory.cancel = function(key) {
+factory.cancel = function(key) {
   return new Promise(function(resolve, reject) {
       $.ajax({
         url: `${FBCreds.databaseURL}/ticket/${key}.json`,
@@ -40,4 +40,19 @@ accountFactory.cancel = function(key) {
   });
 };
 
-module.exports = accountFactory;
+factory.getCustomerHistory = function(uid) {
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: `${FBCreds.databaseURL}/ticket.json?orderBy="uid"&equalTo="${uid}"`,
+      type: 'GET'
+    })
+    .done(function(history) {
+      resolve(history);
+    })
+    .fail(function(error) {
+      reject(error);
+    });
+  });
+};
+
+module.exports = factory;

@@ -2,7 +2,7 @@
 
 const accountFactory = require('../factory/accountFactory');
 
-module.exports = function($scope, loginFactory, profileFactory, orderFactory, $route) {
+module.exports = function($scope, loginFactory, profileFactory, $route, orderFactory, $location) {
   $scope.currentUser = loginFactory.getCurrentUser();
   $scope.profile = null;
   $scope.history = [];
@@ -12,7 +12,7 @@ module.exports = function($scope, loginFactory, profileFactory, orderFactory, $r
     $scope.profile = profile[key];
     console.log('current profile', $scope.profile);
   });
-  orderFactory.getCustomerHistory($scope.currentUser.uid)
+  accountFactory.getCustomerHistory($scope.currentUser.uid)
   .then(function(history) {
     let array = [];
     Object.keys(history).forEach( key => array.push(modifyForDisplay(history[key], key)));
@@ -42,9 +42,8 @@ module.exports = function($scope, loginFactory, profileFactory, orderFactory, $r
   };
   $scope.edit = function(order) {
     console.log('edit', order);
-    accountFactory.getOrder(order.key)
-    .then(function(result) {
-      console.log('ctrl getOrder:', result);
-    });
+    orderFactory.setEditKey(order.key);
+    orderFactory.setCurrentTicket(order.order);
+    $location.url('/order');
   };
 };

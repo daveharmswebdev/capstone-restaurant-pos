@@ -4,9 +4,12 @@ let FBCreds = require('../values/firebaseCreds');
 
 module.exports = function($q, $http) {
   let currentTicket = null;
+  let editKey = null;
 
   let setCurrentTicket = ticket => currentTicket = ticket;
   let getCurrentTicket = () => currentTicket;
+  let setEditKey = key => editKey = key;
+  let getEditKey = () => editKey;
   let getSubTotal = function() {
     let x = 0;
     currentTicket.forEach((item) => x += item.price);
@@ -34,12 +37,16 @@ module.exports = function($q, $http) {
   };
 
   let postTicket = function(ticket) {
-    console.log('postTicket', ticket);
+    let configUrl;
+    if (editKey === null) {
+      configUrl = `${FBCreds.databaseURL}/ticket.json`;
+    } else {
+      configUrl = `${FBCreds.databaseURL}/ticket/${editKey}.json`;
+    }
     return $q(function(resolve, reject) {
-      // $http.post(`${FBCreds.databaseURL}/ticket.json`, JSON.stringify(ticket))
       $http({
-        url: `${FBCreds.databaseURL}/ticket.json`,
-        method: 'POST',
+        url: configUrl,
+        method: editKey === null ? 'POST' : 'PUT',
         data: JSON.stringify(ticket)
       })
       .success(function(response) {
@@ -51,25 +58,24 @@ module.exports = function($q, $http) {
     });
   };
 
-  let getCustomerHistory = function(uid) {
-    console.log(`getting history with ${uid}`);
-    return $q(function(resolve, reject) {
-      $http.get(`${FBCreds.databaseURL}/ticket.json?orderBy="uid"&equalTo="${uid}"`)
-      .success(function(history) {
-        resolve(history);
-      })
-      .error(function(error) {
-        reject(error);
-      });
-    });
-  };
-
   return {
     getMenu,
     getTotals,
     postTicket,
-    setCurrentTicket,
-    getCurrentTicket,
-    getCustomerHistory
+    setCurrentTicket, getCurrentTicket,
+    setEditKey, getEditKey
   };
 };
+
+// let getCustomerHistory = function(uid) {
+//   console.log(`getting history with ${uid}`);
+//   return $q(function(resolve, reject) {
+//     $http.get(`${FBCreds.databaseURL}/ticket.json?orderBy="uid"&equalTo="${uid}"`)
+//     .success(function(history) {
+//       resolve(history);
+//     })
+//     .error(function(error) {
+//       reject(error);
+//     });
+//   });
+// };
