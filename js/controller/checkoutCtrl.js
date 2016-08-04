@@ -1,11 +1,7 @@
 'use strict';
 
 module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
-  console.log('checout ctrl');
-  console.log(orderFactory.getCurrentTicket());
-  // $scope.ticket = orderFactory.getCurrentTicket();
   $scope.currentUser = loginFactory.getCurrentUser();
-  console.log($scope.currentUser.uid);
   profileFactory.getProfile($scope.currentUser.uid)
   .then(function(profile) {
     let key = Object.keys(profile);
@@ -35,14 +31,13 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     ticket.tax = $scope.tax;
     ticket.grandTotal = $scope.grandTotal;
     ticket.timestamp = Date.now();
-    ticket.status = 1; // 1 means active, 0 means cancel, 2 mean complete
+    ticket.status = 'active';
     return ticket;
   };
   $scope.delivery = function() {
     let ticket = $scope.completeTicket();
     ticket.delivery = true;
-    let method = 'POST';
-    orderFactory.postTicket(ticket, method)
+    orderFactory.postTicket(ticket)
     .then(function(result) {
       console.log(result);
     });
