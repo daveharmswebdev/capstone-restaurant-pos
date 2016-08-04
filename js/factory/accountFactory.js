@@ -40,6 +40,23 @@ factory.cancel = function(key) {
   });
 };
 
+factory.review = function(key) {
+  return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: `${FBCreds.databaseURL}/ticket/${key}.json`,
+        type: 'PATCH',
+        dataType: 'json',
+        data: JSON.stringify({ review: 5 })
+      })
+      .done(function(result) {
+        resolve(result);
+      })
+      .fail(function(error) {
+        reject(error);
+      });
+  });
+};
+
 factory.getCustomerHistory = function(uid) {
   return new Promise(function(resolve, reject) {
     $.ajax({

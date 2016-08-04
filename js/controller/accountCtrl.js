@@ -27,7 +27,11 @@ module.exports = function($scope, loginFactory, profileFactory, $route, orderFac
   function modifyForDisplay(order, key) {
     let modifiedOrder = order;
     modifiedOrder.key = key;
-    modifiedOrder.timestamp = new Date(modifiedOrder.timestamp).toLocaleDateString("en-US");
+    let options = {};
+    options.hour12 = true;
+    options.second = false;
+    modifiedOrder.datestamp = new Date(modifiedOrder.timestamp).toLocaleDateString("en-US");
+    modifiedOrder.timestamp = new Date(modifiedOrder.timestamp).toLocaleTimeString("en-US");
     return modifiedOrder;
   }
   $scope.cancel = function(order) {
@@ -46,5 +50,14 @@ module.exports = function($scope, loginFactory, profileFactory, $route, orderFac
     orderFactory.setKey(order.key);
     orderFactory.setCurrentTicket(order.order);
     $location.url('/order');
+  };
+  $scope.review = function(order) {
+    accountFactory.review(order.key)
+    .then(function(result) {
+      $route.reload();
+    })
+    .catch(function(error) {
+      console.log(error.statusText, error.responseText);
+    });
   };
 };

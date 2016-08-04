@@ -11,11 +11,18 @@
   </div>
   <div class="col s12">
     <div class="row white-text history" ng-repeat="order in history">
-      <div class="col s4"><p class="history--content">{{order.timestamp}}</p></div>
-      <div class="col s3"><p class="history--content">${{order.grandTotal}}</p></div>
-      <div class="col s3"><p class="history--content">{{order.status}}</p></div>
+      <div class="col s3">
+        <p class="history--content">{{order.datestamp}}</p>
+        <p class="history--content">{{order.timestamp}}</p>
+      </div>
+      <ul class="col s3">
+        <li ng-repeat="item in order.order">{{item.name}}</li>
+        <li><div class="col s1"><p><i class="small material-icons" ng-click="edit(order)">mode_edit</i></p></div></li>
+      </ul>
+      <div class="col s2"><p class="history--content">${{order.grandTotal}}</p></div>
+      <div class="col s2"><p class="history--content">{{order.status}}</p></div>
       <div class="col s1"><p><i class="small material-icons" ng-click="cancel(order)">not_interested</i></p></div>
-      <div class="col s1"><p><i class="small material-icons" ng-click="edit(order)">mode_edit</i></p></div>
+      <div class="col s1"><p><i class="small material-icons" ng-click="review(order)">star</i></p></div>
     </div>
   </div>
 </div>
