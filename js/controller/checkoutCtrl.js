@@ -40,6 +40,8 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
     orderFactory.postTicket(ticket)
     .then(function(result) {
       console.log(result);
+      orderFactory.setCurrentTicket = null;
+      orderFactory.setEditKey = null;
     });
   };
   $scope.pickup = function() {
