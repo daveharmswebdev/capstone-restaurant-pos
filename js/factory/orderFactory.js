@@ -6,9 +6,9 @@ module.exports = function($q, $http) {
   let currentTicket = null;
   let editKey = null;
 
-  let setCurrentTicket = ticket => currentTicket = ticket;
+  let setCurrentTicket = (ticket) => currentTicket = ticket;
   let getCurrentTicket = () => currentTicket;
-  let setEditKey = key => editKey = key;
+  let setEditKey = (key) => editKey = key;
   let getEditKey = () => editKey;
   let getSubTotal = function() {
     let x = 0;
@@ -62,20 +62,9 @@ module.exports = function($q, $http) {
     getMenu,
     getTotals,
     postTicket,
-    setCurrentTicket, getCurrentTicket,
-    setEditKey, getEditKey
+    setCurrentTicket,
+    getCurrentTicket,
+    setEditKey,
+    getEditKey
   };
 };
-
-// let getCustomerHistory = function(uid) {
-//   console.log(`getting history with ${uid}`);
-//   return $q(function(resolve, reject) {
-//     $http.get(`${FBCreds.databaseURL}/ticket.json?orderBy="uid"&equalTo="${uid}"`)
-//     .success(function(history) {
-//       resolve(history);
-//     })
-//     .error(function(error) {
-//       reject(error);
-//     });
-//   });
-// };

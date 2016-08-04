@@ -13,6 +13,10 @@ module.exports = function($scope) {
 		{
       name: "Account",
       url: "#/account"
-    }
+    },
+		{
+			name: "Profile",
+      url: "#/profile"			
+		}
 	];
 };
