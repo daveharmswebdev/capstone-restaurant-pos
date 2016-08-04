@@ -8,7 +8,9 @@ module.exports = function($q, $http) {
 
   let setCurrentTicket = (ticket) => currentTicket = ticket;
   let getCurrentTicket = () => currentTicket;
-  let setEditKey = (key) => editKey = key;
+  let setKey = function(key) {
+    editKey = key;
+  };
   let getEditKey = () => editKey;
   let getSubTotal = function() {
     let x = 0;
@@ -64,7 +66,7 @@ module.exports = function($q, $http) {
     postTicket,
     setCurrentTicket,
     getCurrentTicket,
-    setEditKey,
+    setKey,
     getEditKey
   };
 };
