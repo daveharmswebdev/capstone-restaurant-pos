@@ -16,7 +16,11 @@ module.exports = function($scope) {
     },
 		{
 			name: "Profile",
-      url: "#/profile"			
+      url: "#/profile"
+		},
+		{
+			name: "End of Day",
+			url: "#/endOfDay"
 		}
 	];
 };

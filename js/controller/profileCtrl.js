@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = function($scope, profileFactory, $location, loginFactory) {
-  let user = loginFactory.getCurrentUser().uid;
+  let user = loginFactory.getCurrentUser();
   let key;
   console.log(user);
-  profileFactory.getProfile(user)
+  profileFactory.getProfile(user.uid)
   .then(function(result) {
     console.log(result.uid);
     key = Object.keys(result);
@@ -15,9 +15,15 @@ module.exports = function($scope, profileFactory, $location, loginFactory) {
   .catch(function(error) {
     console.log(error);
   });
+
+  // if key is still null then use
   $scope.submit = function() {
-    console.log('submit address information', $scope.accountInfo);
-    profileFactory.submitProfile($scope.accountInfo)
+    let accountInfo = $scope.accountInfo;
+    console.log(accountInfo);
+    accountInfo.uid = user.uid;
+    accountInfo.email = user.email;
+    console.log('submit address information', accountInfo);
+    profileFactory.submitProfile(accountInfo, key)
     .then(function() {
       $location.url('/order');
     });
