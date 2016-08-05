@@ -31,8 +31,22 @@ module.exports = function($q, $http, loginFactory) {
     });
   };
 
+  let deleteProfile = function(profile) {
+    console.log('delete profile with user', profile);
+    return $q(function(resolve, reject) {
+      $http.delete(`${FBCreds.databaseURL}/profile/${profile}.json`)
+      .success(function(results) {
+        resolve(results);
+      })
+      .error(function(error) {
+        reject(error);
+      });
+    });
+  };
+
   return {
     submitProfile,
-    getProfile
+    getProfile,
+    deleteProfile
   };
 };
