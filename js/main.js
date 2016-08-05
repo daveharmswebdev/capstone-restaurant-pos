@@ -36,6 +36,10 @@ app.config(function($routeProvider) {
     templateUrl: './views/account.html',
     controller: 'accountCtrl'
   })
+  .when('/endOfDay', {
+    templateUrl: './views/endOfDay.html',
+    controller: 'eodCtrl'
+  })
   .otherwise({
     redirectTo: '/login'
   });
