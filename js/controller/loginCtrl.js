@@ -16,15 +16,32 @@ module.exports = function($scope, loginFactory, $location) {
         console.log('account created', response);
         $location.path('/profile').replace();
         $scope.$apply();
+      })
+      .catch(function(error) {
+        alert(error);
+        $scope.email = '';
+        $scope.password = '';
       });
     }
   };
   $scope.login = function() {
-    console.log('login in with');
-    loginFactory.loginEmail($scope.email, $scope.password)
-    .then(function(response) {
-      console.log(response);
-    });
+    if ($scope.isValidLogin() === true) {
+      loginFactory.loginEmail($scope.email, $scope.password)
+      .then(function(response) {
+        console.log(response);
+        $location.path('/order').replace();
+        $scope.$apply();
+      });
+    } else {
+      alert('Invalid login email and password');
+    }
+  };
+  $scope.isValidLogin = function() {
+    if ($scope.password === undefined || $scope.email === undefined) {
+      return false;
+    } else {
+      return true;
+    }
   };
   $scope.logout = function() {
     loginFactory.logoutUser()
