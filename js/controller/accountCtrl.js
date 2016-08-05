@@ -14,11 +14,21 @@ module.exports = function($scope, loginFactory, profileFactory, $route, orderFac
   });
   accountFactory.getCustomerHistory($scope.currentUser.uid)
   .then(function(history) {
+    console.log(history);
     let array = [];
     Object.keys(history).forEach( key => array.push(modifyForDisplay(history[key], key)));
+    array.sort(function(a,b) {
+      if(a.timestamp < b.timestamp) {
+        return 1;
+      }
+      if(a.timestamp > b.timestamp) {
+        return -1;
+      }
+      return 0;
+    });
     $scope.history = array;
     $scope.$apply();
-    console.log($scope.history);
+    console.log('after', $scope.history);
   })
   .catch(function(error) {
     console.log(error);
@@ -31,7 +41,7 @@ module.exports = function($scope, loginFactory, profileFactory, $route, orderFac
     options.hour12 = true;
     options.second = false;
     modifiedOrder.datestamp = new Date(modifiedOrder.timestamp).toLocaleDateString("en-US");
-    modifiedOrder.timestamp = new Date(modifiedOrder.timestamp).toLocaleTimeString("en-US");
+    modifiedOrder.timestring = new Date(modifiedOrder.timestamp).toLocaleTimeString("en-US");
     return modifiedOrder;
   }
   $scope.cancel = function(order) {

@@ -12,6 +12,7 @@ module.exports = function(firebaseFactory, $timeout) {
       console.log(currentUser);
     } else {
       console.log('no user logged in');
+      currentUser = {};
     }
   });
 

@@ -13,7 +13,7 @@
     <div class="row white-text history" ng-repeat="order in history">
       <div class="col s3">
         <p class="history--content">{{order.datestamp}}</p>
-        <p class="history--content">{{order.timestamp}}</p>
+        <p class="history--content">{{order.timestring}}</p>
       </div>
       <ul class="col s3">
         <li ng-repeat="item in order.order">{{item.name}}</li>
