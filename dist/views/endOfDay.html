@@ -5,12 +5,18 @@
       <div class="card-content white-text eod">
         <span class="card-title">End of Day Report</span>
         <ul>
-          <li ng-repeat="order in orders">{{order.firstName}} {{order.lastName}} ordered {{order.order.length}} {{string = order.order.length > 1 ? 'items' : 'item'}} for a GrandTotal: {{order.grandTotal}}</li>
+          <li ng-repeat="order in orders">
+            <div class="row">
+              <div class="col s3">{{order.firstName}} {{order.lastName}} --</div>
+              <div class="col s3">{{order.timestamp}}</div>
+              <div class="col s3">ordered {{order.order.length}} {{string = order.order.length > 1 ? 'items' : 'item'}}for {{order.delivery === true ? 'delivery' : 'take out'}}, </div>
+              <div class="col s3">GrandTotal: {{order.grandTotal}}</div>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="card-action">
-        <p class="eod--total">End of Day Total: {{eodTotal}}</p>
-        <p class="eod--total">Total Items Sold: {{eodTotalItems}}</p>
+        <p class="eod--total">Total Items Sold: {{eodTotalItems}} -- End of Day Total: {{eodTotal}}</p>
       </div>
     </div>
   </div>
