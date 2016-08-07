@@ -2,7 +2,6 @@
 
 const reportFactory = require('../factory/reportFactory');
 
-
 module.exports = function($scope) {
   $scope.orders = [];
   $scope.eodTotal = 0;
@@ -12,6 +11,7 @@ module.exports = function($scope) {
   .then(function(results) {
     let keys = Object.keys(results);
     keys.forEach(key => $scope.orders.push(results[key]));
+    // $scope.orders = $scope.orders.map(order => order.timestamp = new Date(order.timestamp))
     console.log($scope.orders[0]);
     getReports();
     $scope.eodTotal = $scope.eodTotal.toFixed(2);
