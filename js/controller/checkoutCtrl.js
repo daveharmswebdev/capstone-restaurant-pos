@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
+module.exports = function($scope, $location, orderFactory, loginFactory, profileFactory) {
   $scope.currentUser = loginFactory.getCurrentUser();
   profileFactory.getProfile($scope.currentUser.uid)
   .then(function(profile) {
@@ -42,6 +42,7 @@ module.exports = function($scope, orderFactory, loginFactory, profileFactory) {
       console.log(result);
       orderFactory.setCurrentTicket(null);
       orderFactory.setKey(null);
+      $location.path('./login').replace();
     });
   };
   $scope.pickup = function() {

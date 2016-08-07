@@ -8,6 +8,10 @@ $rgba-primary-2: rgba(248,164, 58,1); // lighter
 $rgba-primary-3: rgba(184,103,  0,1); // darker
 $rgba-primary-4: rgba(143, 80,  0,1); // darkest
 
+.mainNav {
+  background-color: $rgba-primary-2;
+}
+
 .customerLogin {
   background-color: $rgba-primary-1;
   padding: 2rem;
@@ -34,6 +38,18 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
   font-size: 2rem;
 }
 
+.subtotal--label {
+  margin-right: 1rem;
+}
+
+.order--ticket {
+  padding: 1rem
+}
+
+.order--item {
+  margin: 0;
+}
+
 // checkouthtml
 
 .receipt {
@@ -53,4 +69,37 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
 
 .eod--total {
   font-size: 2rem;
+}
+
+// order.html
+
+.order--nav {
+  background-color: $rgba-primary-2;
+}
+
+.order--checkout {
+  background-color: $rgba-primary-0;
+}
+
+.menu--imageGroup {
+  text-align: center;
+  a {
+    margin-bottom: 1rem;
+    background-color: $rgba-primary-0;
+  }
+}
+
+.menu--thumbnail {
+  width: 12rem;
+  margin: 1rem;
+}
+
+.menu--title {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.menu--description {
+  margin: 1rem;
 }
