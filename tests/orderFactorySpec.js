@@ -28,7 +28,6 @@ describe('order factory', function() {
       }
     ];
     oFactory.setCurrentTicket(ticket);
-    console.log('GET TOTALS:',oFactory.getTotals());
     expect(oFactory.getTotals).toBeDefined();
   });
 });
