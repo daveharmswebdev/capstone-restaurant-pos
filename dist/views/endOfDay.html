@@ -1,10 +1,16 @@
 <div class="container">
   <h2 class="eod--title">End of Day Report</h2>
+  <div class="eod--totals">
+    <p class="eod--totals--line">Items Sold: <span>{{eodTotalItems}}</span></p>
+    <p class="eod--totals--line">Subtotal: <span>${{eodSubTotal}}</span></p>
+    <p class="eod--totals--line">Tax: <span>${{eodTax}}</span></p>
+    <p class="eod--totals--line">Grand Total: <span>${{eodGrandTotal}}</span></p>
+  </div>
   <div class="row eod--order" ng-repeat="order in orders">
     <div class="col s3">{{order.key}}</div>
     <div class="col s3">{{order.timeStampString}}</div>
     <div class="col s2">{{order.order.length}}</div>
-    <div class="col s2">{{order.subtotal}}</div>
-    <div class="col s2">{{order.grandTotal}}</div>
+    <div class="col s2">${{order.subtotal}}</div>
+    <div class="col s2">${{order.grandTotal}}</div>
   </div>
 </div>
