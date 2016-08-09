@@ -6,3 +6,5 @@ app.factory('firebaseFactory', require('./firebaseFactory'));
 app.factory('loginFactory', require('./loginFactory'));
 app.factory('profileFactory', require('./profileFactory'));
 app.factory('orderFactory', require('./orderFactory'));
+app.factory('reportFactory', require('./reportFactory'));
+app.service('myService', require('./myService'));

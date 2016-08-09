@@ -1,8 +1,8 @@
 'use strict';
 
-const reportFactory = require('../factory/reportFactory');
+// const reportFactory = require('../factory/reportFactory');
 
-module.exports = function($scope) {
+module.exports = function($scope, reportFactory) {
   $scope.orders = [];
   $scope.eodTotal = 0;
   $scope.eodTotalItems = 0;
@@ -16,7 +16,6 @@ module.exports = function($scope) {
     getReports();
     $scope.eodTotal = $scope.eodTotal.toFixed(2);
     console.log($scope.eodTotal, $scope.eodTotalItems);
-    $scope.$apply();
   })
   .catch(function(error) {
     console.log(error);

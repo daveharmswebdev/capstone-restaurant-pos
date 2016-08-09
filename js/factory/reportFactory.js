@@ -1,24 +1,47 @@
 /* jshint -W079*/
 'use strict';
 
-const $ = require('jQuery');
 const FBCreds = require('../values/firebaseCreds');
+const mock = require('../../archive/mockReport');
 
-let factory = {};
+module.exports = function($q, $http) {
 
-factory.getOrders = function() {
-  return new Promise(function(resolve, reject) {
-    $.ajax({
-      url: `${FBCreds.databaseURL}/ticket.json`,
-      type: 'GET'
-    }).
-    done(function(results) {
-      resolve(results);
-    })
-    .fail(function(error) {
-      reject(error);
+  let getOrders = function() {
+    return $q(function(resolve, reject) {
+      $http.get(`${FBCreds.databaseURL}/ticket.json`)
+      .success(function(results) {
+        resolve(results);
+      })
+      .error(function(results) {
+        reject(results);
+      });
     });
-  });
+  };
+
+  return {
+    getOrders
+  };
 };
 
-module.exports = factory;
+// const $ = require('jQuery');
+//
+// let factory = {};
+//
+// factory.getOrders = function() {
+//   return new Promise(function(resolve, reject) {
+//     $.ajax({
+//       url: `${FBCreds.databaseURL}/ticket.json`,
+//       type: 'GET'
+//     }).
+//     done(function(results) {
+//       console.log(results);
+//       console.log(JSON.stringify(results));
+//       resolve(results);
+//     })
+//     .fail(function(error) {
+//       reject(error);
+//     });
+//   });
+// };
+//
+// module.exports = factory;
