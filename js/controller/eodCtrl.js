@@ -13,6 +13,7 @@ module.exports = function($scope, reportFactory) {
   reportFactory.getOrders()
   .then(function(results) {
     let keys = Object.keys(results);
+    keys.forEach( key => results[key].key = key);
     keys.forEach(key => $scope.orders.push(results[key]));
     // $scope.orders = $scope.orders.map(order => order.timestamp = new Date(order.timestamp))
     sortOrders();
@@ -22,7 +23,6 @@ module.exports = function($scope, reportFactory) {
     $scope.eodTax = parseFloat($scope.eodTax.toFixed(2));
     $scope.orders.forEach(function(order) {
       let timeStampString = new Date(order.timestamp);
-      console.log(timeStampString.toString());
       order.timeStampString = timeStampString.toString();
     });
   })

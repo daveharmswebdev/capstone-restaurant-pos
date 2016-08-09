@@ -52,5 +52,6 @@ describe('eodCtrl', function() {
     console.log(prettier);
     prettier = angular.mock.dump(scope.orders[2]);
     console.log(prettier);
+    expect(scope.orders[0].timeStampString).toBe('Wed Aug 03 2016 10:33:32 GMT-0500 (CDT)');
   });
 });
