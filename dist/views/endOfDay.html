@@ -6,11 +6,28 @@
     <p class="eod--totals--line">Tax: <span>${{eodTax}}</span></p>
     <p class="eod--totals--line">Grand Total: <span>${{eodGrandTotal}}</span></p>
   </div>
-  <div class="row eod--order" ng-repeat="order in orders">
-    <div class="col s3">{{order.key}}</div>
-    <div class="col s3">{{order.timeStampString}}</div>
-    <div class="col s2">{{order.order.length}}</div>
-    <div class="col s2">${{order.subtotal}}</div>
-    <div class="col s2">${{order.grandTotal}}</div>
+  <div class="eod--order" ng-repeat="order in orders">
+    <div class="row eod--order--main">
+      <div class="col s3"><a class="waves-effect" ng-click="showDetails = !showDetails">{{order.key}}</a></div>
+      <div class="col s3">{{order.timeStampString}}</div>
+      <div class="col s2">{{order.status}}</div>
+      <div class="col s2">{{order.order.length}} : ${{order.subtotal}}</div>
+      <div class="col s2">${{order.grandTotal}}</div>
+    </div>
+    <div class="row eod--detail" ng-show="showDetails">
+      <div class="col s4 eod--detail--customer">
+        <p>{{order.firstName}} {{order.lastName}}</p>
+        <p>{{order.email}}</p>
+        <p>{{order.streetAddress}}</p>
+        <p>{{order.city}}, {{order.zip}}</p>
+      </div>
+      <div class="col s4 eod--order--items">
+        <p ng-repeat="item in order.order">{{item.name}}<span>{{item.price}}</span></p>
+      </div>
+      <div class="col s4 eod--order--tender">
+        <p>Tender Amount: <span>{{order.grandTotal}}</span></p>
+        <p>Tender Type: <span>CC</span></p>
+      </div>
+    </div>
   </div>
 </div>
