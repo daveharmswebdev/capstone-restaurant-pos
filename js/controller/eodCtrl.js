@@ -14,6 +14,7 @@ module.exports = function($scope, reportFactory) {
   .then(function(results) {
     let keys = Object.keys(results);
     keys.forEach( key => results[key].key = key);
+    keys.forEach( key => results[key].show = false);
     keys.forEach(key => $scope.orders.push(results[key]));
     // $scope.orders = $scope.orders.map(order => order.timestamp = new Date(order.timestamp))
     sortOrders();
@@ -25,6 +26,7 @@ module.exports = function($scope, reportFactory) {
       let timeStampString = new Date(order.timestamp);
       order.timeStampString = timeStampString.toString();
     });
+    console.log($scope.orders);
   })
   .catch(function(error) {
     console.log(error);
