@@ -10,6 +10,11 @@ module.exports = function($scope, reportFactory) {
   $scope.eodTotalItems = 0;
   $scope.eodDate = null;
 
+  $scope.showDetail = function(order) {
+    console.log(order);
+    order.show = true;
+  };
+
   reportFactory.getOrders()
   .then(function(results) {
     let keys = Object.keys(results);
@@ -50,5 +55,8 @@ module.exports = function($scope, reportFactory) {
       $scope.eodTax += order.tax;
       $scope.eodTotalItems += order.order.length;
     });
+    // $scope.eodGrandTotal = $scope.eodGrandTotal.toFixed(2);
+    // $scope.eodSubTotal = $scope.eodSubTotal.toFixed(2);
+    // $scope.eodTax = $scope.eodTax.toFixed(2);
   }
 };
