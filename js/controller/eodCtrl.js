@@ -10,12 +10,14 @@ module.exports = function($scope, reportFactory) {
   $scope.eodTotalItems = 0;
   $scope.eodDate = null;
 
-  $scope.showDetail = function(order) {
-    console.log(order);
-    order.show = true;
-  };
+  let startDate = new Date(2016,7,10);
+  let endDate = new Date(2016,7,11);
+  startDate = Date.parse(startDate);
+  endDate = Date.parse(endDate);
+  console.log(startDate);
+  console.log(endDate);
 
-  reportFactory.getOrders()
+  reportFactory.getOrders(startDate, endDate)
   .then(function(results) {
     let keys = Object.keys(results);
     keys.forEach( key => results[key].key = key);
@@ -50,9 +52,9 @@ module.exports = function($scope, reportFactory) {
 
   function getReports() {
     $scope.orders.forEach(function(order) {
-      $scope.eodGrandTotal += order.grandTotal;
-      $scope.eodSubTotal += order.subtotal;
-      $scope.eodTax += order.tax;
+      $scope.eodGrandTotal += parseFloat(order.grandTotal.toFixed(2));
+      $scope.eodSubTotal += parseFloat(order.subtotal.toFixed(2));
+      $scope.eodTax += parseFloat(order.tax.toFixed(2));
       $scope.eodTotalItems += order.order.length;
     });
     // $scope.eodGrandTotal = $scope.eodGrandTotal.toFixed(2);

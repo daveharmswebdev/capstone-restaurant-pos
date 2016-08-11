@@ -6,9 +6,9 @@ const mock = require('../../archive/mockReport');
 
 module.exports = function($q, $http) {
 
-  let getOrders = function() {
+  let getOrders = function(start, end) {
     return $q(function(resolve, reject) {
-      $http.get(`${FBCreds.databaseURL}/ticket.json`)
+      $http.get(`${FBCreds.databaseURL}/test.json?orderBy="timestamp"&startAt=${start}&endAt=${end}`)
       .success(function(results) {
         resolve(results);
       })
