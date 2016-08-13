@@ -110,7 +110,7 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
   text-align: center;
 }
 
-.eod--totals {
+.eod--totals, .eod--subreports, .eod--itemsSold {
   width: 40rem;
   margin: 1rem auto 3rem auto;
   padding: 1rem;
@@ -134,7 +134,7 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
   background-color: lightgrey;
 }
 
-.eod--detail {
+.eod--detail,  {
   background-color: $rgba-primary-2;
   p {
     margin: 0.25rem 0;
