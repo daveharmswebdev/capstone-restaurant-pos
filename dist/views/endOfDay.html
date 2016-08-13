@@ -1,10 +1,29 @@
 <div class="container">
   <h2 class="eod--title">End of Day Report</h2>
+  <label for="start_date">Date</label>
+  <input placeholder="Date" id="start_date" type="text" class="validate" ng-model="sDate">
+  <a class="waves-effect waves-light btn" ng-click="getData()">button</a>
   <div class="eod--totals">
     <p class="eod--totals--line">Items Sold: <span>{{eodTotalItems}}</span></p>
     <p class="eod--totals--line">Subtotal: <span>${{eodSubTotal}}</span></p>
     <p class="eod--totals--line">Tax: <span>${{eodTax}}</span></p>
     <p class="eod--totals--line">Grand Total: <span>${{eodGrandTotal}}</span></p>
+  </div>
+  <div class="eod--subreports">
+    <p class="eod--subreports--line">Cancelled<span>{{cancelled}}</span></p>
+    <p class="eod--subreports--line">Delivered<span>{{delivered}}</span></p>
+    <p class="eod--subreports--line">Picked Up<span>{{pickedup}}</span></p>
+  </div>
+  <div class="eod--itemsSold">
+    <p class="eod--itemsSold--line">Fried Rice<span>{{items.friedRice}}</span></p>
+    <p class="eod--itemsSold--line">Green Curry<span>{{items.greenCurry}}</span></p>
+    <p class="eod--itemsSold--line">Mango and Sweet Rice<span>{{items.mangoSweetRice}}</span></p>
+    <p class="eod--itemsSold--line">Pad Thai<span>{{items.padThai}}</span></p>
+    <p class="eod--itemsSold--line">Satay<span>{{items.satay}}</span></p>
+    <p class="eod--itemsSold--line">Red Curry<span>{{items.redCurry}}</span></p>
+    <p class="eod--itemsSold--line">Spring Rolls<span>{{items.springRolls}}</span></p>
+    <p class="eod--itemsSold--line">Sweet and Sour Pork<span>{{items.ssPork}}</span></p>
+    <p class="eod--itemsSold--line">Tom Kha Gai<span>{{items.tomKhaGai}}</span></p>
   </div>
   <div class="eod--order" ng-repeat="order in orders">
     <div class="row eod--order--main">
