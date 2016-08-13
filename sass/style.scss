@@ -104,6 +104,15 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
   margin: 1rem;
 }
 
+// end of day
+
+.dateSelector {
+  a, form, p {
+    display: inline-block;
+    margin: 1rem;
+  }
+}
+
 .eod--title {
   margin: 2rem auto;
   width: 40rem;

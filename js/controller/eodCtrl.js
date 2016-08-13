@@ -17,11 +17,8 @@ module.exports = function($scope, reportFactory) {
     $scope.eodTax = 0;
     $scope.eodTotalItems = 0;
     // $scope.eodDate = null;
-    let sDate = new Date($scope.sDate);
-    sDate = Date.parse(sDate);
-    let eDate = sDate + 86400000;
 
-    reportFactory.getOrders(sDate, eDate)
+    reportFactory.getOrders(getDates().start, getDates().end)
     .then(function(results) {
       let keys = Object.keys(results);
       keys.forEach( key => results[key].key = key);
@@ -43,6 +40,27 @@ module.exports = function($scope, reportFactory) {
       console.log(error);
     });
   };
+
+  function getDates() {
+    let date = {};
+    let start = new Date ($scope.sDate);
+    date.start = Date.parse(start);
+    date.end = date.start + 86400000;
+    if ($scope.timeRange === 'week') {
+      date.start -= 518400000;
+    } else if ($scope.timeRange === 'month') {
+      console.log('month', start.getMonth());
+      start.setMonth(start.getMonth());
+      // start.setDate(1);
+      let newStart = new Date(start.getFullYear(), start.getMonth(), 1);
+      let end = new Date(start.getFullYear(), start.getMonth() + 1, 1);
+      date.start = Date.parse(newStart);
+      date.end = Date.parse(end);
+    }
+    console.log('start', new Date(date.start).toString());
+    console.log('end', new Date(date.end).toString());
+    return date;
+  }
 
   function getSubreports() {
     let items = {};
