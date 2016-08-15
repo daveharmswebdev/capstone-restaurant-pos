@@ -8,7 +8,7 @@ module.exports = function($q, $http) {
 
   let getOrders = function(start, end) {
     return $q(function(resolve, reject) {
-      $http.get(`${FBCreds.databaseURL}/test.json?orderBy="timestamp"&startAt=${start}&endAt=${end}`)
+      $http.get(`${FBCreds.databaseURL}/ticket.json?orderBy="timestamp"&startAt=${start}&endAt=${end}`)
       .success(function(results) {
         resolve(results);
       })

@@ -1,6 +1,9 @@
+/* jshint -W079 */
 'use strict';
 
 const cust = require('./mockCustomers');
+const $ = require('jQuery');
+const FBCreds = require('../values/firebaseCreds');
 
 let mock = {};
 
@@ -93,21 +96,35 @@ function getMockOrder(tempDate) {
   mockOrder.subtotal = getSubtotal(mockOrder.order);
   mockOrder.tax = parseFloat((mockOrder.subtotal * 0.11).toFixed(2));
   mockOrder.grandTotal = mockOrder.subtotal + mockOrder.tax;
-  mockOrder.timeStamp = Date.parse(tempDate);
+  mockOrder.utc = tempDate.toUTCString()
+  mockOrder.timestamp = Date.parse(tempDate);
   mockOrder.uid = "GcRXsxr023elJ2gxUpe1VV8iWYC3";
   mockOrder.zip = '37215';
   return mockOrder;
 }
 
-mock.getData = function(mockDate) {
+mock.getData = function(mockDate, days) {
+  console.log('mock.getData');
   let tempDate = new Date(mockDate);
-  for (let x = 0; x < 1; x++) {
+  for (let x = 0; x < days; x++) {
     tempDate.setDate(tempDate.getDate() + 1);
-    let customers = Math.floor(Math.random() * 5) + 1;
+    console.log(tempDate);
+    let customers = Math.floor(Math.random() * 10) + 25;
     for (let i = 0; i < customers; i++) {
       tempDate.setHours(getHours(), Math.floor(Math.random() * 60), Math.floor(Math.random() * 60));
       let mockOrder = getMockOrder(tempDate);
-      console.log(JSON.stringify(mockOrder, null, 2));
+      $.ajax({
+        url: `${FBCreds.databaseURL}/ticket.json`,
+        type: 'POST',
+        data: JSON.stringify(mockOrder),
+        dataType: 'json',
+      })
+      .done(function(response) {
+        console.log(response);
+      })
+      .fail(function(error) {
+        console.log(error);
+      });
     }
   }
 };

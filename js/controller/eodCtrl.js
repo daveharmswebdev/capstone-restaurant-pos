@@ -17,9 +17,10 @@ module.exports = function($scope, reportFactory) {
     $scope.eodTax = 0;
     $scope.eodTotalItems = 0;
     // $scope.eodDate = null;
-
+    console.log(getDates());
     reportFactory.getOrders(getDates().start, getDates().end)
     .then(function(results) {
+      console.log(results);
       let keys = Object.keys(results);
       keys.forEach( key => results[key].key = key);
       keys.forEach( key => results[key].show = false);

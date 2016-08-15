@@ -2,17 +2,14 @@
 
 const $ = require('jQuery');
 const FBCreds = require('../values/firebaseCreds');
+const mdFactory = require('../factory/mockDataFactory');
 
 module.exports = function($scope, profileFactory, $http) {
-  $scope.test = function() {
-    $.ajax('./mockData.json')
-    .done(function(results) {
-      results.forEach(function(result) {
-        postData(result);
-      });
-    });
-  };
 
+  $scope.test = function() {
+    console.log('scope.test');
+    mdFactory.getData('5/1/2016', 106);
+  };
 
   function postData(result) {
     for (let x = 1; x < 31; x++) {
