@@ -8,8 +8,14 @@ $rgba-primary-2: rgba(248,164, 58,1); // lighter
 $rgba-primary-3: rgba(184,103,  0,1); // darker
 $rgba-primary-4: rgba(143, 80,  0,1); // darkest
 
+html {
+  background: url(https://apa-blog-images.s3-us-west-2.amazonaws.com/posts%2FBlogPost28433%2F1457367805116-shutterstock_125319602.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
 .mainNav {
   background-color: $rgba-primary-2;
+  height: 10vh;
 }
 
 .customerLogin {
@@ -17,6 +23,15 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
   padding: 2rem;
   input, button {
     color: black;
+  }
+}
+
+.profile--input {
+  color: white;
+  background: rgba(184, 103, 0, 0.7);
+  padding: 1rem;
+  input {
+    font-size: 1.5rem;
   }
 }
 
@@ -58,6 +73,11 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
 
 // accoutnhtml
 
+.account {
+  background: white;
+  padding: 1rem;
+}
+
 .history {
   background-color: $rgba-primary-4;
   padding: 1rem;
@@ -75,10 +95,21 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
 
 .order--nav {
   background-color: $rgba-primary-2;
+  height: 8vh;
 }
 
 .order--checkout {
   background-color: $rgba-primary-0;
+}
+
+.menu {
+  background-color: $rgba-primary-4;
+  padding: 1rem;
+}
+
+.menu--collection {
+  height: 82vh;
+  overflow: scroll;
 }
 
 .menu--imageGroup {
@@ -111,6 +142,11 @@ $rgba-primary-4: rgba(143, 80,  0,1); // darkest
     display: inline-block;
     margin: 1rem;
   }
+}
+
+.eod {
+  padding: 1rem;
+  background: white;
 }
 
 .eod--title {
