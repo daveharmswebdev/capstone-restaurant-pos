@@ -16,6 +16,9 @@ html {
 .mainNav {
   background-color: $rgba-primary-2;
   height: 10vh;
+  div {
+    padding: 1rem;
+  }
 }
 
 .customerLogin {

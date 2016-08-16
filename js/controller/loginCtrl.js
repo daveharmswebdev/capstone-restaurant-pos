@@ -1,3 +1,4 @@
+/* jshint -W117 */
 'use strict';
 
 module.exports = function($scope, loginFactory, $location) {
@@ -14,6 +15,7 @@ module.exports = function($scope, loginFactory, $location) {
       loginFactory.createAccount($scope.email, $scope.password)
       .then(function(response) {
         console.log('account created', response);
+        Materialize.toast('Account created!', 4000);
         $location.path('/profile').replace();
         $scope.$apply();
       })
@@ -28,6 +30,7 @@ module.exports = function($scope, loginFactory, $location) {
     if ($scope.isValidLogin() === true) {
       loginFactory.loginEmail($scope.email, $scope.password)
       .then(function(response) {
+        Materialize.toast('Logged in!', 4000);
         console.log(response);
         $location.path('/order').replace();
         $scope.$apply();
@@ -46,6 +49,7 @@ module.exports = function($scope, loginFactory, $location) {
   $scope.logout = function() {
     loginFactory.logoutUser()
     .then(function() {
+      Materialize.toast('You have logged out!', 4000);
       console.log('logout: user out!');
     });
   };

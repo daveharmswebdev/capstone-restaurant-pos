@@ -5,3 +5,7 @@ dist/fonts
 node_modules
 js/values/firebaseCreds.js
 archive
+.firebaserc
+database.rules.json
+dist/404.html
+firebase.json
