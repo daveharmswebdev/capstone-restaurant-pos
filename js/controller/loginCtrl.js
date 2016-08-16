@@ -29,7 +29,7 @@ module.exports = function($scope, loginFactory, $location) {
     if ($scope.isValidLogin() === true) {
       loginFactory.loginEmail($scope.email, $scope.password)
       .then(function(response) {
-        Materialize.toast('Logged in!', 4000) 
+        Materialize.toast('Logged in!', 4000)
         console.log(response);
         $location.path('/order').replace();
         $scope.$apply();
@@ -48,6 +48,7 @@ module.exports = function($scope, loginFactory, $location) {
   $scope.logout = function() {
     loginFactory.logoutUser()
     .then(function() {
+      Materialize.toast('You have logged out!', 4000) 
       console.log('logout: user out!');
     });
   };
