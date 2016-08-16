@@ -40,6 +40,7 @@ module.exports = function($scope, $location, orderFactory, loginFactory, profile
     orderFactory.postTicket(ticket)
     .then(function(result) {
       console.log(result);
+      Materialize.toast('You have submitted your order!', 4000) 
       orderFactory.setCurrentTicket(null);
       orderFactory.setKey(null);
       $location.path('./login').replace();

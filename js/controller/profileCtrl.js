@@ -25,6 +25,7 @@ module.exports = function($scope, profileFactory, $location, loginFactory) {
     console.log('submit address information', accountInfo);
     profileFactory.submitProfile(accountInfo, key)
     .then(function() {
+      Materialize.toast('Profile saved!', 4000) 
       $location.url('/order');
     });
   };
@@ -32,6 +33,7 @@ module.exports = function($scope, profileFactory, $location, loginFactory) {
     profileFactory.deleteProfile(key)
     .then(function(results) {
       console.log(results);
+      Materialize.toast('Profile deleted!', 4000)
       $location.path('/login').replace();
       $scope.$apply();
     });

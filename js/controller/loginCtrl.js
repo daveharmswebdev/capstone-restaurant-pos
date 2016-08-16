@@ -14,6 +14,7 @@ module.exports = function($scope, loginFactory, $location) {
       loginFactory.createAccount($scope.email, $scope.password)
       .then(function(response) {
         console.log('account created', response);
+        Materialize.toast('Account created!', 4000)
         $location.path('/profile').replace();
         $scope.$apply();
       })
@@ -28,6 +29,7 @@ module.exports = function($scope, loginFactory, $location) {
     if ($scope.isValidLogin() === true) {
       loginFactory.loginEmail($scope.email, $scope.password)
       .then(function(response) {
+        Materialize.toast('Logged in!', 4000) 
         console.log(response);
         $location.path('/order').replace();
         $scope.$apply();
